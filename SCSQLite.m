@@ -296,8 +296,6 @@
     if (self.database != nil) {
         databasePath = [documentsDirectory stringByAppendingPathComponent:self.database];
     }else{
-        [[[UIAlertView alloc] initWithTitle:@"Alert" message:@"It is necessary to initialize the database name of the sqlite" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil] show];
-        
         return NO;
     }
     
@@ -310,7 +308,7 @@
     
     BOOL success = YES;
     
-    if(!sqlite3_open([databasePath UTF8String], &db) == SQLITE_OK ) success = NO;
+    if(!(sqlite3_open([databasePath UTF8String], &db) == SQLITE_OK) ) success = NO;
 	
 	return success;
 }
